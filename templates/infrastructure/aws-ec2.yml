@@ -1,0 +1,34 @@
+---
+meta:
+  persistent_disk: 4096
+
+  stemcell:
+    name: bosh-aws-xen-ubuntu
+    version: latest
+
+jobs:
+  - name: docker-logstash-smoke-tests
+    instances: 2
+    networks:
+      - name: docker-logstash-smoke-tests
+    persistent_disk: (( grab meta.persistent_disk ))
+    properties:
+      docker-logstash-smoke-tests:
+
+compilation:
+  cloud_properties:
+    instance_type: m1.small
+
+resource_pools:
+  - name: small_z1
+    cloud_properties:
+      instance_type: m1.small
+
+networks:
+  - name: floating
+    type: vip
+    cloud_properties: {}
+  - name: docker-logstash-smoke-tests
+    type: dynamic
+    cloud_properties:
+      security_groups: (( grab meta.security_groups ))
