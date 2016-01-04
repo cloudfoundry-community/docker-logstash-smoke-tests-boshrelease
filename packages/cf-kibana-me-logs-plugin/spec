@@ -1,0 +1,5 @@
+---
+name: cf-kibana-me-logs-plugin
+dependencies: []
+files:
+  - cf-kibana-me-logs-plugin/cf-kibana-me-logs-*.tgz

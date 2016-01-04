@@ -1,0 +1,13 @@
+set -e
+
+version=6.12.4
+
+cd cli
+
+tar xzf cf-linux-amd64-${version}.tgz
+
+BIN_DIR=${BOSH_INSTALL_TARGET}/bin
+
+mkdir -p ${BIN_DIR}
+
+cp cf ${BIN_DIR}/cf

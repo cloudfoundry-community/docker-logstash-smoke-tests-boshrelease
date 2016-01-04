@@ -1,0 +1,40 @@
+---
+name: logstash-smoke-tests
+packages:
+- cli
+- cf-kibana-me-logs-plugin
+- kibana-me-logs
+- cf-env
+- jq
+
+templates:
+  bin/run: bin/run
+  shell/env: shell/env
+  shell/functions: shell/functions
+
+properties:
+  logstash_smoke_tests.debug:
+    description: "Enable debug output, can be 'true' or 'false' (default)."
+    default: "false"
+  logstash_smoke_tests.org:
+    default: docker-logstash-smoke-test_org
+    description: "Org to use for the tests"
+  logstash_smoke_tests.space:
+    default: docker-logstash-smoke-test_space
+    description: "Space to use for the tests"
+  logstash_smoke_tests.service:
+    default: logstash14
+    description: "Service name of the logstash service being tested"
+  logstash_smoke_tests.plan:
+    default: free
+    description: "Service Plan to use for the tests"
+
+  cf.api:
+    description: "URL of the Cloud Foundry API to interact with for testing"
+  cf.username:
+    description: "Username to authenticate to Cloud Foundry with"
+  cf.password:
+    description: "Password to authenticate to Cloud Foundry with"
+  cf.skip_ssl_validation:
+    description: "Enables the use of --skip-ssl-validation on the CF cli"
+    default: false

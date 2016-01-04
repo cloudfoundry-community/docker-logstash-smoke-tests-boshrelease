@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+package="cf-env"
+version="f36c11"
+file="${package}/${package}-${version}.tgz"
+
+DIR=$(mktemp -d)
+mkdir -p ${DIR}
+tar xzvf ${file} -C ${DIR}
+cp -R ${DIR}/cf-env/* ${BOSH_INSTALL_TARGET}

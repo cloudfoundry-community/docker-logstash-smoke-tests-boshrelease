@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+package="cf-kibana-me-logs-plugin"
+version="0.4.3"
+file="${package}/cf-kibana-me-logs-${version}.tgz"
+
+tar zxvf ${file}
+
+cp cf-plugin-kibana-me-logs_linux_amd64 ${BOSH_INSTALL_TARGET}
+
+chmod 755 ${BOSH_INSTALL_TARGET}/cf-plugin-kibana-me-logs_linux_amd64

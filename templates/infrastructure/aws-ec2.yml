@@ -7,7 +7,7 @@ meta:
     version: latest
 
 jobs:
-  - name: docker-logstash-smoke-tests
+  - name: logstash-smoke-tests
     instances: 2
     networks:
       - name: docker-logstash-smoke-tests

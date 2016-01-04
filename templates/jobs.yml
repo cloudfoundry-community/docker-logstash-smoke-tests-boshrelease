@@ -7,14 +7,15 @@ update:
   serial: false
 
 jobs:
-  - name: docker-logstash-smoke-tests
+  - name: logstash-smoke-tests
     templates:
-    - name: docker-logstash-smoke-tests
+    - name: logstash_smoke_tests
       release: docker-logstash-smoke-tests
     instances: 0
+    lifecycle: errand
     resource_pool: small_z1
     persistent_disk: 0
     update:
       canaries: 10
     properties:
-      docker-logstash-smoke-tests:
+      logstash_smoke_tests:

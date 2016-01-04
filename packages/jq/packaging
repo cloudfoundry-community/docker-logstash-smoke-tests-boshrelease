@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+package="jq"
+version="1.5"
+file="${package}/jq-${version}.tgz"
+
+tar zxvf ${file}
+
+cp -R bin ${BOSH_INSTALL_TARGET}
+
+chmod 755 ${BOSH_INSTALL_TARGET}/bin

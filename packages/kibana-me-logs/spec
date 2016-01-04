@@ -1,0 +1,5 @@
+---
+name: kibana-me-logs
+dependencies: []
+files:
+  - kibana-me-logs/kibana-me-logs-*.tgz

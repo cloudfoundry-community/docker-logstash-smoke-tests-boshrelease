@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+package="kibana-me-logs"
+version="85024d"
+file="${package}/kibana-me-logs-${version}.tgz"
+
+DIR=$(mktemp -d)
+mkdir -p ${DIR}
+tar xzvf ${file} -C ${DIR}
+cp -R ${DIR}/kibana-me-logs/* ${BOSH_INSTALL_TARGET}

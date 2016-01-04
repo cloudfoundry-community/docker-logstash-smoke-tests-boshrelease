@@ -1,2 +1,7 @@
 ---
 final_name: docker-logstash-smoke-tests
+
+blobstore:
+  provider: s3
+  options:
+    bucket_name: docker-logstash-smoke-tests-boshrelease
