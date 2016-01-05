@@ -71,7 +71,7 @@ prepare_blobs() {
 prepare_stemcell() {
   select_infrastructure $*
 
-  stemcellOS=${stemcellOS:-"centos"}
+  stemcellOS=${stemcellOS:-"ubuntu"}
   directorCPI=$(bosh status | awk '/CPI/{print $2}')
   directorUUID=$(awk -F: '/target_uuid/{print $2}' ~/.bosh_config | tr -d ' ')
   directorName=$(awk -F: '/target_name/{print $2}' ~/.bosh_config)
