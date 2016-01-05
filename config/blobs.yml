@@ -1,1 +1,29 @@
---- {}
+---
+cf-env/cf-env-f36c11.tgz:
+  object_id: f5552453-7bd4-44eb-a5ac-62f55eda086e
+  sha: 46630c43e43ad44f8f491c439dd9ab98a83e7f55
+  size: 882290
+cf-kibana-me-logs-plugin/cf-kibana-me-logs-0.4.2.tgz:
+  object_id: 87f10387-2cf5-4471-97da-5d51b0512a63
+  sha: f2d48906baf32457c10b35fa1c4d380ba740eb18
+  size: 2516769
+cf-kibana-me-logs-plugin/cf-kibana-me-logs-0.4.3.tgz:
+  object_id: e033dda4-39c1-4ae8-bd4b-9b3d29c26486
+  sha: 5413f6108be2dffb47a1d4fbf48607188646fce3
+  size: 2516585
+cli/cf-linux-amd64-6.12.4.tgz:
+  object_id: 918f7d1b-5a15-4dc3-920f-75f8e968dbd5
+  sha: c8002433d3fc3260cc68b2d012caba2bb162799b
+  size: 5012747
+git/git-v2.6.1.tar.gz:
+  object_id: 3615bb09-f197-48fe-abe5-dc62f2ab7f5f
+  sha: c6dc547d35a5f7968f83a701bded37ce223ccfa2
+  size: 5518933
+jq/jq-1.5.tgz:
+  object_id: d9a71a40-72f5-47f6-8fce-9c00b0f23299
+  sha: 68fec45b25050ae454e29e1193c5e2ef1e5241c4
+  size: 1368380
+kibana-me-logs/kibana-me-logs-85024d.tgz:
+  object_id: ea77555f-70e1-42a9-89ba-b7ee25751c15
+  sha: 63f1bc21da573b395c19de79062da23d808bbee4
+  size: 2070270
