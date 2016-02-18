@@ -9,7 +9,7 @@ update:
 jobs:
   - name: logstash-smoke-tests
     templates:
-    - name: logstash_smoke_tests
+    - name: logstash-smoke-tests
       release: docker-logstash-smoke-tests
     instances: 0
     lifecycle: errand
