@@ -27,3 +27,11 @@ kibana-me-logs/kibana-me-logs-85024d.tgz:
   object_id: ea77555f-70e1-42a9-89ba-b7ee25751c15
   sha: 63f1bc21da573b395c19de79062da23d808bbee4
   size: 2070270
+cf-cli/cf-linux-amd64-6.16.0.tgz:
+  object_id: bb0ca428-3793-49a1-8c21-e0179170129a
+  sha: 4fda0e396262051d642b430089a34521efc7d8d9
+  size: 6103968
+go/go-1.5.3.tar.gz:
+  object_id: 05199257-462b-410e-9322-bf75ffc9b4d6
+  sha: c5377eca4837968d043b681f00a852a262f0f5f6
+  size: 80147269

@@ -1,0 +1,10 @@
+---
+name: cf-logstash-smoke-tests
+
+dependencies:
+  - go
+  - cf-cli
+  - cf-env
+
+files:
+  - cf-logstash-smoke-tests/**/*

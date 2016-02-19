@@ -1,9 +1,11 @@
 ---
 name: logstash-smoke-tests
 packages:
-- cli
+- go
+- cf-cli
 - cf-kibana-me-logs-plugin
 - kibana-me-logs
+- cf-logstash-smoke-tests
 - cf-env
 - jq
 
@@ -11,6 +13,7 @@ templates:
   bin/run: bin/run
   shell/env: shell/env
   shell/functions: shell/functions
+  config/smoke-tests.json: config/smoke-tests.json
 
 properties:
   logstash_smoke_tests.debug:
@@ -35,6 +38,8 @@ properties:
     description: "Username to authenticate to Cloud Foundry with"
   cf.password:
     description: "Password to authenticate to Cloud Foundry with"
+  cf.apps_domain:
+    description: "Apps Domain for apps in Cloud Foundry"
   cf.skip_ssl_validation:
     description: "Enables the use of --skip-ssl-validation on the CF cli"
     default: false

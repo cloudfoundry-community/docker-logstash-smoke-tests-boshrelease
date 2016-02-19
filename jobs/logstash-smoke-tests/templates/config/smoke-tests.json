@@ -1,0 +1,12 @@
+{
+  "api":            "<%= p('cf.api') %>",
+  "apps_domain":    "<%= p('cf.apps_domain') %>",
+  "admin_user":     "<%= p('cf.username') %>",
+  "admin_password": "<%= p('cf.password') %>",
+  "service":   "<%= p('logstash_smoke_tests.service') %>",
+  "plan":		  "<%= p('logstash_smoke_tests.plan') %>",
+  "space":     "<%= p('logstash_smoke_tests.space') %>",
+  "org_name":       "<%= p('logstash_smoke_tests.org') %>",
+  "skip_ssl_validation": true,
+  "create_permissive_security_group": true
+}

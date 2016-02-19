@@ -1,4 +1,6 @@
 # docker-logstash-smoke-tests BOSH release
+This BOSH release invokes the smoke tests for Logstash on CF.
+The actual smoke tests reside at: http://github.com/starkandwayne/cf-logstash-smoke-tests
 
 ## License
 
@@ -92,6 +94,19 @@ Note that for each job you create in your release that you want to run on a
 Job VM you must add a `templates:` entry with the `name:` of the template
 and the `release:` from which it comes.
 
+
+You can run the smoke tests with
+
+```
+bosh run errand logstash-smoke-tests
+```
+
+If you want to keep the vm alive after running the errand
+
+```
+bosh run errand logstash-smoke-tests --keep-alive
+```
+
 ## Deployments Blobs
 
 The script `./docker-logstash-smoke-tests-dev blobs` is used to prepare the `blobs/` directory
@@ -142,4 +157,3 @@ bosh -n recreate docker-logstash-smoke-tests 0 --force
 ```
 
 See `docs/docker-logstash-smoke-tests.md` for release specific information.
-
