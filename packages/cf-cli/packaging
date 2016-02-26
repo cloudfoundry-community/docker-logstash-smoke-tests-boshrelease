@@ -1,8 +1,8 @@
 set -e
 
-version=6.12.4
+version=6.16.0
 
-cd cli
+cd cf-cli
 
 tar xzf cf-linux-amd64-${version}.tgz
 

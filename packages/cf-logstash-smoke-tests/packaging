@@ -1,0 +1,6 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+package="cf-logstash-smoke-tests"
+cp -a ${package}/* ${BOSH_INSTALL_TARGET}/
+export CONFIG_PATH=/var/vcap/jobs/logstash-smoke-tests/config/smoke-tests.json

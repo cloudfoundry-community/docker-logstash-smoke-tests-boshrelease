@@ -1,70 +1,13 @@
 #!/usr/bin/env bash
 
-set -eux
-
 source "$(dirname $(dirname ${0}))/shell/env"
 
+cd /var/vcap/packages/cf-logstash-smoke-tests
+export GOPATH="${PWD}/Godeps/_workspace"
+export GOROOT="/var/vcap/packages/go"
+export PATH="/var/vcap/packages/cf-cli/bin:${GOPATH}/bin:${GOROOT}/bin:${PATH}"
+export CONFIG_PATH="/var/vcap/jobs/logstash-smoke-tests/config/smoke-tests.json"
+export PLUGIN_PATH="/var/vcap/packages/cf-kibana-me-logs-plugin/cf-plugin-kibana-me-logs_linux_amd64"
+export KIBANA_ME_LOGS_APP_DIR=/var/vcap/packages/kibana-me-logs
 
-CF_USER="<%= p("cf.username") %>"
-CF_PASS="<%= p("cf.password") %>"
-CF_API="<%= p("cf.api") %>"
-TEST_ORG="<%= p("logstash_smoke_tests.org") %>"
-TEST_SPACE="<%= p("logstash_smoke_tests.space") %>"
-TEST_SERVICE="<%= p("logstash_smoke_tests.service") %>"
-TEST_PLAN="<%= p("logstash_smoke_tests.plan") %>"
-
-APP="docker-logstash-test-app"
-SVC="docker-logstash-test-service"
-
-cleanup() {
-	echo "Cleaning up after ourselves..."
-	cf delete "${APP}" -f || true
-	cf delete "kibana-${SVC}" -f || true
-	cf delete-service "${SVC}" -f || true
-
-	cf delete-space "${TEST_SPACE}" -f || true
-	cf delete-org "${TEST_ORG}" -f || true
-}
-
-app_url() {
-	app=$1
-	cf curl $(cf curl /v2/apps?q=name:$app | jq -r .resources[].metadata.url)/stats | jq -r '."0".stats.uris[]' | head -1
-}
-
-echo "Installing cf-plugin-kibana-me-logs"
-cf plugins | grep kibana-me-logs || cf install-plugin /var/vcap/packages/cf-kibana-me-logs-plugin/cf-plugin-kibana-me-logs_linux_amd64
-
-trap cleanup SIGINT SIGTERM EXIT
-
-echo "Logging into CF..."
-cf login -a "${CF_API}" -u "${CF_USER}" -p "${CF_PASS}" <%= p("cf.skip_ssl_validation") ? "--skip-ssl-validation" : "" %>
-
-echo "Creating test org/space..."
-cf create-org "${TEST_ORG}" || true
-cf target -o "${TEST_ORG}"
-cf create-space "${TEST_SPACE}" || true
-cf target -s "${TEST_SPACE}"
-
-echo "Pushing test app..."
-pushd /var/vcap/packages/cf-env
-cf push "${APP}" --no-start
-cf create-service "${TEST_SERVICE}" "${TEST_PLAN}" "${SVC}"
-cf bind-service "${APP}" "${SVC}"
-cf start ${APP}
-popd
-
-echo "Verifying test app is responding..."
-curl --fail $(app_url ${APP})
-
-echo "Spinning up kibana-me-logs against the test app..."
-KIBANA_ME_LOGS_APP_DIR=/var/vcap/packages/kibana-me-logs cf kibana-me-logs "${APP}"
-
-echo "Verifying kibana-me-logs is getting data..."
-user=$(cf curl $(cf curl /v2/apps?q=name:kibana-${SVC} | jq -r .resources[].metadata.url)/env | jq -r .environment_json.KIBANA_USERNAME)
-pass=$(cf curl $(cf curl /v2/apps?q=name:kibana-${SVC} | jq -r .resources[].metadata.url)/env | jq -r .environment_json.KIBANA_PASSWORD)
-curl --fail "${user}:${pass}@$(app_url kibana-${SVC})"
-curl --fail "${user}:${pass}@$(app_url kibana-${SVC})/elasticsearch/_nodes"
-#FIXME make sure that this will catch the r4 issue
-
-echo "All tests succeeded!"
-exit 0
+./bin/test

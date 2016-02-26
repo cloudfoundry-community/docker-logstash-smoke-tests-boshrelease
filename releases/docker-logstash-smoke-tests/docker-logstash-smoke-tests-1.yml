@@ -1,0 +1,53 @@
+---
+packages:
+- name: cf-cli
+  version: 8ff383c984e099bdbb03af80a0e450dab089707f
+  fingerprint: 8ff383c984e099bdbb03af80a0e450dab089707f
+  sha1: 7857b170181a884611be1324471a6d40f64390dc
+  dependencies: []
+- name: cf-env
+  version: baca068309f2fc451e2a3156e5881f6e8d84e744
+  fingerprint: baca068309f2fc451e2a3156e5881f6e8d84e744
+  sha1: e42a1b3429ab3b269c566f87ef017f6270faef20
+  dependencies: []
+- name: cf-kibana-me-logs-plugin
+  version: e709a7f01e576ebe03865f8abe05b7adf673464d
+  fingerprint: e709a7f01e576ebe03865f8abe05b7adf673464d
+  sha1: 15d28d0f7a89a05fd4a8c49dd81b160c2726497b
+  dependencies: []
+- name: cf-logstash-smoke-tests
+  version: eb58e613e5a542628d4b7c0d2284902c0354dca1
+  fingerprint: eb58e613e5a542628d4b7c0d2284902c0354dca1
+  sha1: e4ad5a9805bac969e7bf5e297706499d9d29da70
+  dependencies:
+  - cf-cli
+  - cf-env
+  - go
+- name: go
+  version: 6b520548d1508e2c1e243456b8d60f7a56d93945
+  fingerprint: 6b520548d1508e2c1e243456b8d60f7a56d93945
+  sha1: 2914ff1a14e4f6c85ee80fd3e8cc09e09c766c0c
+  dependencies: []
+- name: jq
+  version: 265ac7f8b1d4d35fc556138561806a175891effb
+  fingerprint: 265ac7f8b1d4d35fc556138561806a175891effb
+  sha1: 50fbcccd8c7f152f6a72adadd2046225f35c92bf
+  dependencies: []
+- name: kibana-me-logs
+  version: 9521a8bc0e5210cb833641c60d681c9b9418e3cb
+  fingerprint: 9521a8bc0e5210cb833641c60d681c9b9418e3cb
+  sha1: 87e84ef0056443b05c8e6ad4d57e3fc2b0611a7d
+  dependencies: []
+jobs:
+- name: logstash-smoke-tests
+  version: df48788edb4bcd7dd2cc0c6413e449157b3c426e
+  fingerprint: df48788edb4bcd7dd2cc0c6413e449157b3c426e
+  sha1: 592e7ef087b5c86abc68d481cf20c44cb6ae8bca
+license:
+  version: 6266e6d72460e0aaccda244014590b4b647434ef
+  fingerprint: 6266e6d72460e0aaccda244014590b4b647434ef
+  sha1: 5fffde5f68a6cf73811e2ba941f5b3d65cd293f1
+commit_hash: fd9bada6
+uncommitted_changes: true
+name: docker-logstash-smoke-tests
+version: '1'
